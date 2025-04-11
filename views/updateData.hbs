@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>update</title>
+</head>
+<body>
+<div class="wrapper">
+{{!-- Search form to search the restaurant to update --}}
+<h4>SEARCH RESTAURANT</h4>
+<form action="/restaurants/update" method="post">
+<div class="inputFields">
+<input type="text" name="id" placeholder="Enter ID no to search" class="searchParameter">
+</div>
+<div class="search">
+<input type="submit" name="search" value="Search" class="searchBtn">
+</div>
+</form>
+{{!-- Update form to search the restaurant to update --}}
+<h4>UPDATE RESTAURANT</h4>
+<form id="updateForm" action="/restaurants/update/{{data.id}}?_method=PUT" method="post">
+<div class="inputFields">
+<div id="inputdiv1"><input type="text" name = "key" placeholder = "Enter data to be updated" class="searchParameter"></div>
+<div id="inputdiv2"><input type="text" name= "value" placeholder = "Enter updated value" class="searchParameter"></div>
+</div>
+<div class="update">
+<input type="submit" class="updateBtn" value="Update">
+</div>
+</form>
+</div>
+<br><br>
+    {{#if error}}
+    <div class="error" style="display:block;">{{error}} </div>
+    {{/if}}
+   <div class="allCards">
+  {{#if data}}
+    <div class="card">
+      {{#if data.name}}
+        <h4>{{data.name}}
+       {{#if data.restaurant_id}}
+        <span>{{data.restaurant_id}}</span>
+        </h4>
+      {{/if}}
+      <hr>
+      {{/if}} 
+      <br><br>
+      <div class="information">
+        <fieldset>
+          <legend>Address</legend>
+          {{#if data.address.building}}
+            <span>{{data.address.building}}</span>
+          {{/if}}
+
+          {{#if data.address.street}}
+            <span>{{data.address.street}},</span>
+          {{/if}}
+          {{#if data.borough}}
+            <span>{{data.borough}},</span>
+          {{/if}}
+          {{#if data.address.zipcode}}
+            <span>{{data.address.zipcode}}</span>
+          {{/if}}
+          </p>
+          {{#if data.address.coord}}
+            <p class="coord">({{data.address.coord}})</p>
+          {{/if}}
+        </fieldset>
+        <br><br>
+        <fieldset>
+          <legend>Cuisine</legend>
+          {{#if data.cuisine}}
+            <p class="cuisineName">{{data.cuisine}}</p>
+          {{/if}} 
+        </fieldset>
+        <br><br>
+        <fieldset>
+          <legend>Reviews</legend>
+          {{#if data.grades}}
+            {{#each data.grades}}
+              {{#if this.date}}
+                <p><strong>Dated:</strong> {{this.date}}</p>
+              {{/if}}
+              
+              {{#if this.grade}}
+                <p><strong>Graded:</strong> {{this.grade}} ,
+              {{/if}}
+
+              {{#if this.score}}
+                <span><strong>Scored:</strong> {{this.score}}</span>
+              {{/if}}
+            </p>
+            {{/each}}
+          {{/if}}
+        </fieldset>
+      </div>
+    </div>
+  {{/if}}
+</div>
+</div>
+</body>
+</html>

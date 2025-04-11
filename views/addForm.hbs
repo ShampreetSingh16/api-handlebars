@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add</title>
+</head>
+<body>
+    {{#if successMessage}}
+    <div class="message" style="display:block;" >
+    {{successMessage}}
+    </div>
+    {{/if}}
+    {{#if error}}
+    <div class="error" style="display:block;" >
+    {{error}}
+    </div>
+    {{/if}}
+    <br><br>
+    <div class = "myform">
+    <h4>ADD NEW RESTAURANT</h4>
+    <form class="AddForm" action="/restaurants/add" method="post">
+      
+       <fieldset class="infoFieldset">
+        <legend>General Information</legend>
+        <label for="name">Name</label><br>
+        <input type="text" name="name" placeholder="Enter name" class="addtxt"><br>
+
+        <label for="borough">Borough</label><br>
+        <input type="text" name="borough" placeholder="Enter borough" class="addtxt" required ><br>
+    
+        <label for="cuisine">Cuisine</label><br>
+        <input type="text" name="cuisine" placeholder="Enter cuisine" class="addtxt" required><br>
+
+        <label for="RestaurantID">Restaurant ID</label><br>
+        <input type="text" name="restaurant_id" placeholder="Enter restaurant ID" class="addtxt" required><br>
+        </fieldset>
+
+        <br><br>
+        <fieldset class="addressFieldset">
+        <legend>Address Information</legend>
+        <label for="building">Building</label><br>
+        <input type="text" name="address[building]" placeholder="Enter building name" class="addtxt" required><br>
+
+        <label for="street">Street</label><br>
+        <input type="text" name="address[street]" placeholder="Enter street name" class="addtxt" required><br>
+
+        <label for="zipcode">Zipcode</label><br>
+        <input type="text" name="address[zipcode]" placeholder="Enter zipcode" class="addtxt" required><br>
+
+        <label for="coord">Coordinates</label><br>
+        <input type="text" name="address[coord]" placeholder="Enter coordinates eg: (0,0)" class="addtxt"required><br>
+        </fieldset>
+        <br><br>
+        <fieldset class="gradeFieldset">
+        <legend>Grades</legend>
+        <label for="gradeDate">Date</label><br>
+        <input type="date" name="grades[0][date]" placeholder="select date" class="addtxt" required><br>
+
+        <label for="grade">Grade</label><br>
+        <input type="text" name="grades[0][grade]" placeholder="Enter grade"class="addtxt" required><br>
+
+        <label for="score">Score</label><br>
+        <input type="text" name="grades[0][score]" placeholder="Enter score" class="addtxt" required><br>
+        </fieldset>
+        <br>
+        <div class="sbtn">
+        <input type="submit" value="ADD RESTAURANT" class="addbtn">
+        </div>
+    </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<h2>RESTAURANTS COLLECTION DATA</h2>
+<div class="allCards">
+  {{#each data}}
+    <div class="card">
+      {{#if this.name}}
+        <h4>{{this.name}}
+       {{#if this.restaurant_id}}
+        <span>{{this.restaurant_id}}</span>
+       </h4>
+      {{/if}}
+      <hr>
+      {{/if}} 
+      <br><br>
+      <div class="information">
+        <fieldset>
+          <legend>Address</legend>
+          {{#if this.address.building}}
+            <span>{{this.address.building}}</span>
+          {{/if}}
+
+          {{#if this.address.street}}
+            <span>{{this.address.street}},</span>
+          {{/if}}
+          {{#if this.borough}}
+            <span>{{this.borough}},</span>
+          {{/if}}
+          {{#if this.address.zipcode}}
+            <span>{{this.address.zipcode}}</span>
+          {{/if}}
+          </p>
+          {{#if this.address.coord}}
+            <p class="coord">({{this.address.coord}})</p>
+          {{/if}}
+        </fieldset>
+        <br><br>
+        <fieldset>
+          <legend>Cuisine</legend>
+          {{#if this.cuisine}}
+            <p class="cuisineName">{{this.cuisine}}</p>
+          {{/if}} 
+        </fieldset>
+        <br><br>
+        <fieldset>
+          <legend>Reviews</legend>
+          {{#if this.grades}}
+            {{#each this.grades}}
+              {{#if this.date}}
+                <p><strong>Dated:</strong> {{this.date}}</p>
+              {{/if}}
+              
+              {{#if this.grade}}
+                <p><strong>Graded:</strong> {{this.grade}} ,
+              {{/if}}
+
+              {{#if this.score}}
+                <span><strong>Scored:</strong> {{this.score}}</span>
+              {{/if}}
+            </p>
+            {{/each}}
+          {{/if}}
+        </fieldset>
+      </div>
+    </div>
+  {{/each}}
+</div>
+</body>
+</html>

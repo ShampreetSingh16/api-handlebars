@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    {{#if error}}
+    <div class="error" style="display:block;" >
+    {{error}}
+    </div>
+    {{/if}}
+    <br><br>
+    <div class = "registerForm">
+        <h4>REGISTER</h4>
+        <form action="/register" method="post">
+        <label for="username">Username</label><br><br>
+        <input type="text" name= "username" placeholder="Enter username" class="txtFields"><br><br><br><br>
+        <label for="email">Email</label><br><br>
+        <input type="text" name= "email" placeholder="Enter email address" class="txtFields"><br><br><br><br>
+        <label for="password">Password</label><br><br>
+        <input type="password" name= "password" placeholder="Enter password" class="txtFields"><br><br><br><br>
+        <input type="submit" name = "registerBtn" value="Register" class="updateBtn">
+        </form>
+        <br>
+        <p class="p1">Already a registered User?<a href="/"> Login</a></p>
+    </div>
+</body>
+</html>
